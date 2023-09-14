@@ -14,6 +14,15 @@ class ExerciseActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
+        setSupportActionBar(binding.toolbarExercise)
 
+        // To add the back button in the toolbar
+        if (supportActionBar != null) {
+            supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        }
+
+        binding.toolbarExercise.setNavigationOnClickListener {
+            onBackPressed()
+        }
     }
 }
