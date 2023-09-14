@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="@dimen/main_screen_main_layout_padding"
     tools:context=".MainActivity">
 
     <ImageView
@@ -32,7 +33,7 @@
             android:layout_gravity="center"
             android:text="@string/start"
             android:textColor="@color/colorPrimary"
-            android:textSize="22sp"
+            android:textSize="@dimen/default_text_size_btn"
             android:textStyle="bold" />
     </FrameLayout>
 
