@@ -30,7 +30,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/start"
-            android:textSize="22sp" />
+            android:textColor="@color/colorPrimary"
+            android:textSize="22sp"
+            android:textStyle="bold" />
     </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
