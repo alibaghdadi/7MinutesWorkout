@@ -29,6 +29,14 @@ class ExerciseActivity : AppCompatActivity() {
             onBackPressed()
         }
 
+        setupRestView()
+    }
+
+    private fun setupRestView() {
+        if (restTimer != null) {
+            restTimer?.cancel()
+            restProgress = 0
+        }
         setRestProgressBar()
     }
 
