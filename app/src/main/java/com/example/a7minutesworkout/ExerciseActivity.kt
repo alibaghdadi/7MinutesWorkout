@@ -36,6 +36,9 @@ class ExerciseActivity : AppCompatActivity() {
 
         setRestProgressBar()
 
+        val exerciseModel: ExerciseModel
+
+
     }
 
     private fun setupRestView() {
