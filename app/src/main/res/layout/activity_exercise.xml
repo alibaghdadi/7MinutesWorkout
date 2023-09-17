@@ -17,6 +17,18 @@
         app:layout_constraintTop_toTopOf="parent"
         app:titleTextColor="@color/colorPrimary" />
 
+    <ImageView
+        android:id="@+id/ivModel"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_margin="15dp"
+        android:contentDescription="@string/workout_model_images"
+        app:layout_constraintBottom_toTopOf="@id/tvTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbarExercise"
+        tools:src="@drawable/ic_push_up" />
+
     <TextView
         android:id="@+id/tvTitle"
         android:layout_width="match_parent"
