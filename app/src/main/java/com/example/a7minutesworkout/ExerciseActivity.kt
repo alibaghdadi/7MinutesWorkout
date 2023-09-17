@@ -1,5 +1,6 @@
 package com.example.a7minutesworkout
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
@@ -19,6 +20,8 @@ class ExerciseActivity : AppCompatActivity() {
 
     private var exerciseList: ArrayList<ExerciseModel>? = null
     private var currentExercisePosition = -1
+
+    private val rest = "Rest"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,7 +52,8 @@ class ExerciseActivity : AppCompatActivity() {
         binding.tvTitle.requestLayout()
 
         binding.flExerciseProgressBar.visibility = View.GONE
-        binding.tvTitle.text = "Rest"
+        binding.tvTitle.text = rest
+        binding.ivModel.setBackgroundResource(0)
         binding.flRestProgressBar.visibility = View.VISIBLE
 
         resetRestTimers()
@@ -63,7 +67,8 @@ class ExerciseActivity : AppCompatActivity() {
         binding.tvTitle.requestLayout()
 
         binding.flRestProgressBar.visibility = View.GONE
-        binding.tvTitle.text = "Exercise Name"
+        binding.tvTitle.text = exerciseList!![currentExercisePosition].getName()
+        binding.ivModel.setBackgroundResource(exerciseList!![currentExercisePosition].getImage())
         binding.flExerciseProgressBar.visibility = View.VISIBLE
 
         resetRestTimers()
@@ -74,7 +79,7 @@ class ExerciseActivity : AppCompatActivity() {
     private fun setRestProgressBar() {
         binding.restProgressBar.progress = restProgress
 
-        restTimer = object : CountDownTimer(10000, 1000) {
+        restTimer = object : CountDownTimer(10update 000, 1000) {
             override fun onTick(p0: Long) {
                 restProgress++
                 binding.restProgressBar.progress = 10 - restProgress
@@ -101,17 +106,18 @@ class ExerciseActivity : AppCompatActivity() {
             }
 
             override fun onFinish() {
-                setupRestView()
-                setRestProgressBar()
+                if (currentExercisePosition == exerciseList?.size?.minus(1)) {
+                    val intent = Intent(this@ExerciseActivity, MainActivity::class.java)
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                    startActivity(intent)
+                    finish()
+                } else {
+                    setupRestView()
+                    setRestProgressBar()
+                }
             }
 
         }.start()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        resetRestTimers()
-        resetExerciseTimers()
     }
 
     private fun resetRestTimers() {
@@ -126,6 +132,12 @@ class ExerciseActivity : AppCompatActivity() {
             exerciseTimer?.cancel()
             exerciseProgress = 0
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        resetRestTimers()
+        resetExerciseTimers()
     }
 
 }

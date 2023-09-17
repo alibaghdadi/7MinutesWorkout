@@ -8,7 +8,7 @@ object Constants {
 
         val jumpingJacks = ExerciseModel(
             1,
-            "jumping_jacks",
+            "Jumping Jacks",
             R.drawable.ic_jumping_jacks,
             isCompleted = false,
             isSelected = false
@@ -16,67 +16,67 @@ object Constants {
 
         val wallSit = ExerciseModel(
             2,
-            "wall_sit",
+            "Wall Sit",
             R.drawable.ic_wall_sit
         )
 
         val pushUp = ExerciseModel(
             3,
-            "push_up",
+            "Push Up",
             R.drawable.ic_push_up
         )
 
         val abdominalCrunch = ExerciseModel(
             4,
-            "abdominal_crunch",
+            "Abdominal Crunch",
             R.drawable.ic_abdominal_crunch
         )
 
         val stepUpOntoChair = ExerciseModel(
             5,
-            "step_up_onto_chair",
+            "Step Up Onto Chair",
             R.drawable.ic_step_up_onto_chair
         )
 
         val squat = ExerciseModel(
             6,
-            "squat",
+            "Squat",
             R.drawable.ic_squat
         )
 
         val tricepsDipOnChair = ExerciseModel(
             7,
-            "triceps_dip_on_chair",
+            "Triceps Dip On Chair",
             R.drawable.ic_triceps_dip_on_chair
         )
 
         val plank = ExerciseModel(
             8,
-            "plank",
+            "Plank",
             R.drawable.ic_plank
         )
 
         val highKneesRunningInPlace = ExerciseModel(
             9,
-            "high_knees_running_in_place",
+            "High Knees Running In Place",
             R.drawable.ic_high_knees_running_in_place
         )
 
         val lunge = ExerciseModel(
             10,
-            "lunge",
+            "Lunge",
             R.drawable.ic_lunge
         )
 
         val pushUpAndRotation = ExerciseModel(
             11,
-            "push_up_and_rotation",
+            "Push Up And Rotation",
             R.drawable.ic_push_up_and_rotation
         )
 
         val sidePlank = ExerciseModel(
             12,
-            "side_plank",
+            "Side Plank",
             R.drawable.ic_side_plank
         )
 

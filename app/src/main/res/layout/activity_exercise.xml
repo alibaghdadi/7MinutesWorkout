@@ -19,10 +19,11 @@
 
     <ImageView
         android:id="@+id/ivModel"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
-        android:layout_margin="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="10dp"
         android:contentDescription="@string/workout_model_images"
+        android:scaleType="fitXY"
         app:layout_constraintBottom_toTopOf="@id/tvTitle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -40,7 +41,8 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/flRestProgressBar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ivModel" />
 
     <FrameLayout
         android:id="@+id/flRestProgressBar"
@@ -51,7 +53,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbarExercise">
+        app:layout_constraintTop_toBottomOf="@id/tvTitle">
 
         <ProgressBar
             android:id="@+id/restProgressBar"
@@ -94,7 +96,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbarExercise"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle"
         tools:visibility="visible">
 
         <ProgressBar
