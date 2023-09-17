@@ -79,7 +79,7 @@ class ExerciseActivity : AppCompatActivity() {
     private fun setRestProgressBar() {
         binding.restProgressBar.progress = restProgress
 
-        restTimer = object : CountDownTimer(10update 000, 1000) {
+        restTimer = object : CountDownTimer(10000, 1000) {
             override fun onTick(p0: Long) {
                 restProgress++
                 binding.restProgressBar.progress = 10 - restProgress
