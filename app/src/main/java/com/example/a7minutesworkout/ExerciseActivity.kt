@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.View
+import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.a7minutesworkout.databinding.ActivityExerciseBinding
 
@@ -116,6 +117,13 @@ class ExerciseActivity : AppCompatActivity() {
 
             override fun onFinish() {
                 if (currentExercisePosition == exerciseList?.size?.minus(1)) {
+
+                    Toast.makeText(
+                        this@ExerciseActivity,
+                        "Congratulation!! You have completed the 7 minutes workout.",
+                        Toast.LENGTH_LONG
+                    ).show()
+
                     val intent = Intent(this@ExerciseActivity, MainActivity::class.java)
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                     startActivity(intent)
