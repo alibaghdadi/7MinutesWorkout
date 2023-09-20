@@ -21,7 +21,7 @@ class ExerciseActivity : AppCompatActivity() {
     private var exerciseList: ArrayList<ExerciseModel>? = null
     private var currentExercisePosition = -1
 
-    private val rest = "Rest"
+    private val rest = "Rest\n\nUPCOMING EXERCISE\n"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,18 +42,24 @@ class ExerciseActivity : AppCompatActivity() {
             onBackPressed()
         }
 
+        setupRestView()
         setRestProgressBar()
     }
 
     private fun setupRestView() {
 
+        binding.flExerciseProgressBar.visibility = View.GONE
+        binding.ivModel.visibility = View.GONE
+
         val tvConstraint = binding.tvTitle.layoutParams as ConstraintLayout.LayoutParams
         tvConstraint.bottomToTop = binding.flRestProgressBar.id
+        tvConstraint.topToBottom = ConstraintLayout.LayoutParams.UNSET
         binding.tvTitle.requestLayout()
 
-        binding.flExerciseProgressBar.visibility = View.GONE
-        binding.tvTitle.text = rest
-        binding.ivModel.setBackgroundResource(0)
+        binding.tvTitle.text = buildString {
+            append(rest)
+            append(exerciseList!![currentExercisePosition + 1].getName())
+        }
         binding.flRestProgressBar.visibility = View.VISIBLE
 
         resetRestTimers()
@@ -62,18 +68,21 @@ class ExerciseActivity : AppCompatActivity() {
 
     private fun setupExerciseView() {
 
+        binding.flRestProgressBar.visibility = View.GONE
+        binding.ivModel.visibility = View.VISIBLE
+
         val tvConstraint = binding.tvTitle.layoutParams as ConstraintLayout.LayoutParams
         tvConstraint.bottomToTop = binding.flExerciseProgressBar.id
+        tvConstraint.topToBottom = binding.ivModel.id
+
         binding.tvTitle.requestLayout()
 
-        binding.flRestProgressBar.visibility = View.GONE
         binding.tvTitle.text = exerciseList!![currentExercisePosition].getName()
         binding.ivModel.setBackgroundResource(exerciseList!![currentExercisePosition].getImage())
         binding.flExerciseProgressBar.visibility = View.VISIBLE
 
         resetRestTimers()
         resetExerciseTimers()
-
     }
 
     private fun setRestProgressBar() {
