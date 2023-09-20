@@ -1,6 +1,8 @@
 package com.example.a7minutesworkout
 
 import android.content.Intent
+import android.media.MediaPlayer
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
@@ -10,6 +12,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.a7minutesworkout.databinding.ActivityExerciseBinding
+import java.lang.Exception
 import java.util.Locale
 
 class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
@@ -26,6 +29,7 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     private var currentExercisePosition = -1
 
     private var tts: TextToSpeech? = null
+    private var player: MediaPlayer? = null
 
     private var isFirst = true
     private val rest = "Rest\n\nUPCOMING EXERCISE\n"
@@ -57,6 +61,8 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     }
 
     private fun setupRestView() {
+
+        playSounds()
 
         binding.flExerciseProgressBar.visibility = View.GONE
         binding.ivModel.visibility = View.GONE
@@ -106,7 +112,7 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
         restTimer = object : CountDownTimer(10000, 1000) {
             override fun onTick(p0: Long) {
-                if(restProgress == 1){
+                if (restProgress == 1) {
                     if (isFirst) {
                         speakOut("Get ready, Next Exercise " + exerciseList!![currentExercisePosition + 1].getName())
                         isFirst = false
@@ -178,8 +184,13 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
     override fun onDestroy() {
         super.onDestroy()
+
         resetRestTimers()
         resetExerciseTimers()
+
+        if (player != null) {
+            player!!.stop()
+        }
     }
 
     override fun onInit(status: Int) {
@@ -199,4 +210,16 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         tts!!.speak(text, TextToSpeech.QUEUE_FLUSH, null, "")
     }
 
+    private fun playSounds() {
+        try {
+            val soundURI =
+                Uri.parse("android.resource://com.example.a7minutesworkout/" + R.raw.press_start)
+            player = MediaPlayer.create(applicationContext, soundURI)
+            player?.isLooping = false
+            player?.start()
+
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
 }
