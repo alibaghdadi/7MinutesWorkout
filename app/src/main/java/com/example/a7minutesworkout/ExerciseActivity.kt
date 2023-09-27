@@ -11,6 +11,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.a7minutesworkout.databinding.ActivityExerciseBinding
 import java.lang.Exception
 import java.util.Locale
@@ -35,6 +36,8 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     private val rest = "Rest\n\nUPCOMING EXERCISE\n"
     private val ready = "GET READY FOR\n\nUPCOMING EXERCISE\n"
 
+    private var exerciseAdapter: ExerciseStatusAdapter? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityExerciseBinding.inflate(layoutInflater)
@@ -51,6 +54,8 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         tts = TextToSpeech(this, this)
 
         exerciseList = Constants.defaultExerciseList()
+
+        setupExerciseStatusRecyclerView()
 
         binding.toolbarExercise.setNavigationOnClickListener {
             onBackPressed()
@@ -71,6 +76,9 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         tvConstraint.bottomToTop = binding.flRestProgressBar.id
         tvConstraint.topToBottom = ConstraintLayout.LayoutParams.UNSET
         binding.tvTitle.requestLayout()
+
+        val rvConstraint = binding.rvExerciseStatus.layoutParams as ConstraintLayout.LayoutParams
+        rvConstraint.topToBottom = ConstraintLayout.LayoutParams.UNSET
 
         binding.tvTitle.text = buildString {
             if (isFirst)
@@ -95,11 +103,15 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         tvConstraint.bottomToTop = binding.flExerciseProgressBar.id
         tvConstraint.topToBottom = binding.ivModel.id
 
+        val rvConstraint = binding.rvExerciseStatus.layoutParams as ConstraintLayout.LayoutParams
+        rvConstraint.topToBottom = binding.flExerciseProgressBar.id
+
         binding.tvTitle.requestLayout()
 
         binding.tvTitle.text = exerciseList!![currentExercisePosition].getName()
         binding.ivModel.setBackgroundResource(exerciseList!![currentExercisePosition].getImage())
         binding.flExerciseProgressBar.visibility = View.VISIBLE
+
 
         speakOut(exerciseList!![currentExercisePosition].getName() + " for thirty seconds")
 
@@ -221,5 +233,14 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         } catch (e: Exception) {
             e.printStackTrace()
         }
+    }
+
+    private fun setupExerciseStatusRecyclerView() {
+        binding.rvExerciseStatus.layoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+
+        exerciseAdapter = ExerciseStatusAdapter(exerciseList!!)
+
+        binding.rvExerciseStatus.adapter = exerciseAdapter
     }
 }
