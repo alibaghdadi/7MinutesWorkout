@@ -41,7 +41,7 @@ class ExerciseStatusAdapter(private val items: ArrayList<ExerciseModel>) :
                 holder.tvItem.setTextColor(Color.parseColor("#212121"))
             }
 
-            model.getIsCompleted() -> {
+            model.getIsCompleted()git stat   -> {
                 holder.tvItem.background = ContextCompat.getDrawable(
                     holder.itemView.context,
                     R.drawable.item_circular_color_accent_background
