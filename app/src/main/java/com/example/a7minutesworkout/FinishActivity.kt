@@ -24,5 +24,9 @@ class FinishActivity : AppCompatActivity() {
             val intent = Intent(this@FinishActivity, MainActivity::class.java)
             startActivity(intent)
         }
+
+        binding.toolbarFinish.setNavigationOnClickListener {
+            onBackPressed()
+        }
     }
 }

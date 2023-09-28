@@ -45,7 +45,6 @@
 
     </LinearLayout>
 
-
     <TextView
         android:id="@+id/tvCon"
         android:layout_width="match_parent"
@@ -53,7 +52,7 @@
         android:layout_margin="25dp"
         android:gravity="center"
         android:text="@string/conga"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="20sp" />
 
     <Button
