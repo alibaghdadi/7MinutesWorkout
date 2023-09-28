@@ -4,4 +4,8 @@
     <string name="start">Start</string>
     <string name="get_ready">GET READY FOR</string>
     <string name="workout_model_images">workout model images</string>
+    <string name="end">END</string>
+    <string name="finish">FINISH</string>
+    <string name="conga">Congratulations!\nYou have done the workout!</string>
+    <string name="image">image</string>
 </resources>
