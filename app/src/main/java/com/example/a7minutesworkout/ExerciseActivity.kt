@@ -9,7 +9,6 @@ import android.os.CountDownTimer
 import android.speech.tts.TextToSpeech
 import android.util.Log
 import android.view.View
-import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.a7minutesworkout.databinding.ActivityExerciseBinding
@@ -167,14 +166,6 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
                 exerciseAdapter!!.notifyDataSetChanged()
 
                 if (currentExercisePosition == exerciseList?.size?.minus(1)) {
-
-                    speakOut("Congratulation!! You have completed the 7 minutes workout.")
-
-                    Toast.makeText(
-                        this@ExerciseActivity,
-                        "Congratulation!! You have completed the 7 minutes workout.",
-                        Toast.LENGTH_LONG
-                    ).show()
 
                     val intent = Intent(this@ExerciseActivity, FinishActivity::class.java)
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
