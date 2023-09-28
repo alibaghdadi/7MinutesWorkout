@@ -15,18 +15,23 @@ class FinishActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
+        setSupportActionBar(binding.toolbarFinish)
+
         // To add the back button in the toolbar
         if (supportActionBar != null) {
             supportActionBar?.setDisplayHomeAsUpEnabled(true)
         }
 
+        binding.toolbarFinish.setNavigationOnClickListener {
+            val intent = Intent(this@FinishActivity, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
         binding.btnFinish.setOnClickListener {
             val intent = Intent(this@FinishActivity, MainActivity::class.java)
             startActivity(intent)
-        }
-
-        binding.toolbarFinish.setNavigationOnClickListener {
-            onBackPressed()
+            finish()
         }
     }
 }

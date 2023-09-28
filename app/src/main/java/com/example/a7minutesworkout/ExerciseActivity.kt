@@ -19,8 +19,8 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
     private lateinit var binding: ActivityExerciseBinding
 
-    private val restTime = 1L
-    private val exerciseTime = 3L
+    private val restTime = 10L
+    private val exerciseTime = 30L
 
     private var restTimer: CountDownTimer? = null
     private var restProgress = 0
