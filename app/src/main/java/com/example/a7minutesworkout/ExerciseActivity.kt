@@ -176,7 +176,7 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
                         Toast.LENGTH_LONG
                     ).show()
 
-                    val intent = Intent(this@ExerciseActivity, MainActivity::class.java)
+                    val intent = Intent(this@ExerciseActivity, FinishActivity::class.java)
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                     startActivity(intent)
                     finish()
