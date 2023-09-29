@@ -60,7 +60,8 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         setupExerciseStatusRecyclerView()
 
         binding.toolbarExercise.setNavigationOnClickListener {
-            onBackPressed()
+            val exitDialogFragment = ExitDialogFragment()
+            exitDialogFragment.show(supportFragmentManager, "MyDialog")
         }
 
         setupRestView()
