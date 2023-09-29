@@ -68,6 +68,11 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         setRestProgressBar()
     }
 
+    override fun onBackPressed() {
+        val exitDialogFragment = ExitDialogFragment()
+        exitDialogFragment.show(supportFragmentManager, "MyDialog")
+    }
+
     private fun setupRestView() {
 
         playSounds()
@@ -114,7 +119,6 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         binding.tvTitle.text = exerciseList!![currentExercisePosition].getName()
         binding.ivModel.setBackgroundResource(exerciseList!![currentExercisePosition].getImage())
         binding.flExerciseProgressBar.visibility = View.VISIBLE
-
 
         speakOut(exerciseList!![currentExercisePosition].getName() + " for thirty seconds")
 

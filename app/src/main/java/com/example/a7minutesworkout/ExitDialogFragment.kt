@@ -8,14 +8,19 @@ import androidx.fragment.app.DialogFragment
 class ExitDialogFragment : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
 
-        val builder = AlertDialog.Builder(requireActivity())
-        builder.setTitle("Exit")
-            .setMessage("Are you sure to Exit!")
-            .setPositiveButton("OK") { _, _ ->
-                ExerciseActivity().onBackPressed()
-            }
-            .setNegativeButton("Cancel") { _, _ ->
-            }
-        return builder.create()
+        return activity?.let {
+            val builder = AlertDialog.Builder(requireActivity())
+            builder.setTitle("Exit")
+                .setMessage("Are you sure to Exit!")
+                .setPositiveButton("OK") { _, _ ->
+                    dismiss()
+                    activity?.finish()
+                }
+                .setNegativeButton("Cancel") { _, _ ->
+                    dismiss()
+                }
+            builder.create()
+        } ?: throw IllegalStateException("Activity cannot be null")
+
     }
 }
