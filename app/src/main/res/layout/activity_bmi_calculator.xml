@@ -6,4 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".BmiCalculator">
 
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarBMICalculator"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:background="@color/white"
+        android:theme="@style/ToolbarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:titleTextColor="@color/colorPrimary" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

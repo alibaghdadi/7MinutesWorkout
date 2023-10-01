@@ -12,5 +12,17 @@ class BmiCalculator : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
         
+        setSupportActionBar(binding.toolbarBMICalculator)
+
+        // To add the back button in the toolbar
+        if (supportActionBar != null) {
+            supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        }
+
+        binding.toolbarBMICalculator.setNavigationOnClickListener {
+            val exitDialogFragment = ExitDialogFragment()
+            exitDialogFragment.show(supportFragmentManager, "MyDialog")
+        }
+
     }
 }
