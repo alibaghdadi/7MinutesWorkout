@@ -11,12 +11,13 @@ class BmiCalculator : AppCompatActivity() {
         binding = ActivityBmiCalculatorBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-        
+
         setSupportActionBar(binding.toolbarBMICalculator)
 
         // To add the back button in the toolbar
         if (supportActionBar != null) {
             supportActionBar?.setDisplayHomeAsUpEnabled(true)
+            supportActionBar?.title = "Calculate BMI"
         }
 
         binding.toolbarBMICalculator.setNavigationOnClickListener {
