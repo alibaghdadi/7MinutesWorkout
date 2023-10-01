@@ -8,4 +8,6 @@
     <string name="finish">FINISH</string>
     <string name="conga">Congratulations!\nYou have done the workout!</string>
     <string name="image">image</string>
+    <string name="calculator">Calculator</string>
+    <string name="bmi">BMI</string>
 </resources>
