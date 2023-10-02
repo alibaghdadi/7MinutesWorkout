@@ -26,4 +26,9 @@ class BmiCalculator : AppCompatActivity() {
         }
 
     }
+
+    override fun onBackPressed() {
+        val exitDialogFragment = ExitDialogFragment()
+        exitDialogFragment.show(supportFragmentManager, "MyDialog")
+    }
 }
