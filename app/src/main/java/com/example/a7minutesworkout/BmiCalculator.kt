@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.a7minutesworkout.databinding.ActivityBmiCalculatorBinding
 import kotlin.math.pow
+import java.text.DecimalFormat
 
 class BmiCalculator : AppCompatActivity() {
     private lateinit var binding: ActivityBmiCalculatorBinding
@@ -32,7 +33,9 @@ class BmiCalculator : AppCompatActivity() {
             val height = binding.edMetricUnitHeight.text.toString().toFloat()
 
             val bmiResult = calculateBMI(weight, height)
-            val screenResult = bmiWeightRanges(bmiResult)
+            val roundedBMIResult = Math.round(bmiResult * 100.0) / 100.0.toFloat()
+            val screenResult = bmiWeightRanges(roundedBMIResult)
+            
             binding.tvBmi.text = screenResult
 
         }
