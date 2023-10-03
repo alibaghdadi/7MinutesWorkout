@@ -54,4 +54,21 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
+    <TextView
+        android:id="@+id/tvBmi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tilMetricUnitHeight"
+        android:layout_margin="20dp"
+        android:gravity="center"
+        tools:text="BMI" />
+
+    <Button
+        android:id="@+id/btnBMI"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvBmi"
+        android:layout_margin="10dp"
+        android:text="@string/calculate" />
+
 </RelativeLayout>

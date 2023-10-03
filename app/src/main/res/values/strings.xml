@@ -12,4 +12,5 @@
     <string name="bmi">BMI</string>
     <string name="editText_weight_hint">Weight (in kg)</string>
     <string name="editText_height_hint">Height (in cm)</string>
+    <string name="calculate">CALCULATE</string>
 </resources>
