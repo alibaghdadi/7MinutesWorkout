@@ -13,4 +13,6 @@
     <string name="editText_weight_hint">Weight (in kg)</string>
     <string name="editText_height_hint">Height (in cm)</string>
     <string name="calculate">CALCULATE</string>
+    <string name="metric_units">METRIC UNITS</string>
+    <string name="us_units">US UNITS</string>
 </resources>

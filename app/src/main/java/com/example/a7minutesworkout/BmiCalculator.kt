@@ -71,7 +71,7 @@ class BmiCalculator : AppCompatActivity() {
 
     private fun bmiWeightRanges(bmiResult: Float) = when {
         bmiResult < 18.5F -> "YOUR BMI\n$bmiResult\nUnderweight\n" +
-                "Severely underweight!! Take care of yourself!! Eat more!"
+                "Very severely underweight!! Take care of yourself!! Eat more!"
 
         bmiResult in 18.5F..24.9F -> "YOUR BMI\n$bmiResult\nHealthy"
 
