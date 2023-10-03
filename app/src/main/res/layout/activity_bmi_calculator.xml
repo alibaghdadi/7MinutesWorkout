@@ -61,6 +61,7 @@
         android:layout_below="@+id/tilMetricUnitHeight"
         android:layout_margin="20dp"
         android:gravity="center"
+        android:textSize="20sp"
         tools:text="BMI" />
 
     <Button
