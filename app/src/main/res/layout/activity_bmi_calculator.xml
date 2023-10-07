@@ -38,6 +38,7 @@
             android:textStyle="bold" />
 
         <RadioButton
+            android:id="@+id/rbUsUnit"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="0.5"
@@ -52,7 +53,7 @@
     </RadioGroup>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilMetricUnitWeight"
+        android:id="@+id/tilUnitWeight"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -62,7 +63,7 @@
         app:hintTextColor="@color/colorAccent">
 
         <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/edMetricUnitWeight"
+            android:id="@+id/edUnitWeight"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/editText_weight_hint"
@@ -72,17 +73,17 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilMetricUnitHeight"
+        android:id="@+id/tilUnitHeight"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tilMetricUnitWeight"
+        android:layout_below="@id/tilUnitWeight"
         android:layout_margin="10dp"
         app:boxStrokeColor="@color/colorAccent"
         app:hintTextColor="@color/colorAccent">
 
         <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/edMetricUnitHeight"
+            android:id="@+id/edUnitHeight"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/editText_height_hint"
@@ -95,7 +96,7 @@
         android:id="@+id/tvBmi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tilMetricUnitHeight"
+        android:layout_below="@+id/tilUnitHeight"
         android:layout_margin="20dp"
         android:gravity="center"
         android:textSize="20sp"

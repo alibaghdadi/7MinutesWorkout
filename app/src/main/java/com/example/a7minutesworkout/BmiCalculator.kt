@@ -4,10 +4,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.a7minutesworkout.databinding.ActivityBmiCalculatorBinding
 import kotlin.math.pow
-import java.text.DecimalFormat
 
 class BmiCalculator : AppCompatActivity() {
     private lateinit var binding: ActivityBmiCalculatorBinding
+    private var isMetric: Boolean = true
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityBmiCalculatorBinding.inflate(layoutInflater)
@@ -27,13 +27,34 @@ class BmiCalculator : AppCompatActivity() {
             exitDialogFragment.show(supportFragmentManager, "MyDialog")
         }
 
+        binding.rgUnits.setOnCheckedChangeListener { _, checkedID ->
+
+            when (checkedID) {
+                binding.rbMetricUnit.id -> {
+                    isMetric = true
+                    binding.tilUnitWeight.hint = "Weight (in kg)"
+                    binding.tilUnitHeight.hint = "Height (in cm)"
+                }
+
+                binding.rbUsUnit.id -> {
+                    isMetric = false
+                    binding.tilUnitWeight.hint = "Weight (in lb)"
+                    binding.tilUnitHeight.hint = "Height (in in)"
+                }
+            }
+        }
+
         binding.btnBMI.setOnClickListener {
 
             if (validateMetricUnits()) {
-                val weight = binding.edMetricUnitWeight.text.toString().toFloat()
-                val height = binding.edMetricUnitHeight.text.toString().toFloat()
+                val weight = binding.edUnitWeight.text.toString().toFloat()
+                val height = binding.edUnitHeight.text.toString().toFloat()
 
-                val bmiResult = calculateBMI(weight, height)
+                val bmiResult = if (isMetric)
+                    calculateBMIMetricUnits(weight, height)
+                else
+                    calculateBMIUsUnits(weight, height)
+
                 val roundedBMIResult = Math.round(bmiResult * 100.0) / 100.0.toFloat()
                 val screenResult = bmiWeightRanges(roundedBMIResult)
 
@@ -44,6 +65,7 @@ class BmiCalculator : AppCompatActivity() {
 
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         val exitDialogFragment = ExitDialogFragment()
         exitDialogFragment.show(supportFragmentManager, "MyDialog")
@@ -52,22 +74,25 @@ class BmiCalculator : AppCompatActivity() {
     private fun validateMetricUnits(): Boolean {
         var isValid = true
 
-        binding.tilMetricUnitWeight.error = null
-        binding.tilMetricUnitHeight.error = null
+        binding.tilUnitWeight.error = null
+        binding.tilUnitHeight.error = null
 
-        if (binding.edMetricUnitWeight.text.toString().isEmpty()) {
+        if (binding.edUnitWeight.text.toString().isEmpty()) {
             isValid = false
-            binding.tilMetricUnitWeight.error = "Your weight is empty"
-        } else if (binding.edMetricUnitHeight.text.toString().isEmpty()) {
+            binding.tilUnitWeight.error = "Your weight is empty"
+        } else if (binding.edUnitHeight.text.toString().isEmpty()) {
             isValid = false
-            binding.tilMetricUnitHeight.error = "Your height is empty"
+            binding.tilUnitHeight.error = "Your height is empty"
         }
 
         return isValid
     }
 
-    private fun calculateBMI(weight: Float, height: Float): Float =
+    private fun calculateBMIMetricUnits(weight: Float, height: Float) =
         weight / ((height / 100).pow(2))
+
+    private fun calculateBMIUsUnits(weight: Float, height: Float) =
+        (weight * 703) / ((height).pow(2))
 
     private fun bmiWeightRanges(bmiResult: Float) = when {
         bmiResult < 18.5F -> "YOUR BMI\n$bmiResult\nUnderweight\n" +
