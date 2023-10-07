@@ -20,7 +20,7 @@ class HistoryActivity : AppCompatActivity() {
             supportActionBar?.setDisplayHomeAsUpEnabled(true)
         }
 
-        binding.toolbarHistory.setOnClickListener {
+        binding.toolbarHistory.setNavigationOnClickListener {
             val exitDialogFragment = ExitDialogFragment()
             exitDialogFragment.show(supportFragmentManager, "MyDialog")
         }
