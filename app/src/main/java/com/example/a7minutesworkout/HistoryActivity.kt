@@ -18,6 +18,7 @@ class HistoryActivity : AppCompatActivity() {
         // To add the back button in the toolbar
         if (supportActionBar != null) {
             supportActionBar?.setDisplayHomeAsUpEnabled(true)
+            supportActionBar?.title = "History"
         }
 
         binding.toolbarHistory.setNavigationOnClickListener {
