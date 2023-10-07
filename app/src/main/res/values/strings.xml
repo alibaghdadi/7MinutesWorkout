@@ -9,6 +9,7 @@
     <string name="conga">Congratulations!\nYou have done the workout!</string>
     <string name="image">image</string>
     <string name="calculator">Calculator</string>
+    <string name="history">History</string>
     <string name="bmi">BMI</string>
     <string name="editText_weight_hint">Weight (in kg)</string>
     <string name="editText_height_hint">Height (in cm)</string>
