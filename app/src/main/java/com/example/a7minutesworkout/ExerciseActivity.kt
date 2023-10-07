@@ -1,5 +1,6 @@
 package com.example.a7minutesworkout
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.media.MediaPlayer
 import android.net.Uri
@@ -68,6 +69,7 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         setRestProgressBar()
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         val exitDialogFragment = ExitDialogFragment()
         exitDialogFragment.show(supportFragmentManager, "MyDialog")
@@ -143,6 +145,7 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
                 binding.tvRestTimer.text = (10 - restProgress).toString()
             }
 
+            @SuppressLint("NotifyDataSetChanged")
             override fun onFinish() {
 
                 currentExercisePosition++
